@@ -2,7 +2,6 @@
 
 require_once dirname(__FILE__) . "/BaseService.class.php";
 require_once dirname(__FILE__) . "/../dao/AccountDao.class.php";
-require_once dirname(__FILE__) . "/../clients/SMTPClient.class.php";
 
 class AccountService extends BaseService{
 
@@ -10,7 +9,6 @@ class AccountService extends BaseService{
 
     public function __construct() {
         $this->dao = new AccountDao();
-        $this->smtpClient = new SMTPClient();
     }
 
     public function getAccounts($search, $offset, $limit, $order) {
@@ -38,8 +36,6 @@ class AccountService extends BaseService{
             else
                 throw $e;
         }
-
-        $this->smtpClient->sendVerificationMail($account);
         return $account;
     }
 
@@ -50,8 +46,6 @@ class AccountService extends BaseService{
             throw new Exception("Invalid token.");
         
         $this->dao->update($account['id'], ['status' => "ACTIVE"]);
-
-        $this->smtpClient->sendConfirmationMail($account);
     }
 
     public function getSubscriptions($id) {
