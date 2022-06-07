@@ -1,0 +1,23 @@
+.clouds {
+    width: 401px;
+    height: 300px;
+    background: url("../images/clouds.png");
+    top: 247px;
+    left: 151px;
+}
+
+.imo {
+    width: 183px;
+    height: 57px;
+    background: url("../images/imo.png");
+    top: 310px;
+    left: 330px;
+}
+
+.dots {
+    width: 66px;
+    height: 9px;
+    background: url("../images/dots.png");
+    top: 410px;
+    left: 220px;
+}
