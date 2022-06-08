@@ -1,27 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="https://fonts.googleapis.com/css?family=Vibur&display=swap" rel="stylesheet">
-        <link href="resources/styles/main.css" rel="stylesheet">
-        <link href="resources/styles/register_login.css" rel="stylesheet">
-    </head>
+	<head>
+		<link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+		<link href="resources/styles/main.css" rel="stylesheet">
+		<link href="resources/styles/register_login.css" rel="stylesheet">
+	</head>
 	<body>
-		<form action="dummy.html">
-			<label for="email" class="formLabel" style="top: 242px; left: 720px;"><b>e-mail</b></label>
-			<input type="text" name="email" style="top: 297px; left: 758px;" required>
-
-			<label for="password" class="formLabel" style="top: 409px; left: 741px;"><b>password</b></label>
-			<input type="password" name="password" style="top: 464px; left: 758px;" required>
-
-			<button type="submit" style="top: 620px; left: 900px;"><span class="buttonText">LOG IN</span></button>
-		</form>
-
-		<form action="sign_up.html">
-			<button type="submit" style="top: 620px; left: 180px;"><span class="buttonText">SIGN UP</span></button>
-		</form>
-
-		<div class="logo clouds"></div>
-		<div class="logo imo"></div>
-		<div class="logo dots"></div>
+        <div class="container">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td height="150px" style="font-size:150px; line-height:150px;" width="100%">&nbsp;</td>
+                </tr>
+			</table>
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td width="50%" class="stack-column-center" rowspan="4">
+                        <img src="resources/images/imo_logo.png" class="logo" style="margin-bottom: 50px;">
+                        <form action="sign_up.html">
+                            <button type="submit"><span class="buttonText">SIGN UP</span></button>
+                        </form>
+                    </td>
+                </tr>
+                <form action="dummy.html">
+                    <tr style="display: flex; flex-direction: column;">
+                        <td width="50%" class="stack-column-center" id="emailLabelCell">
+                            <label for="email" class="formLabel"><b>e-mail</b></label>
+                        </td>
+                        <td width="50%" class="stack-column-center">
+                            <input type="text" name="email" required>
+                        </td>
+                    </tr>
+                    <tr style="display: flex; flex-direction: column;">
+                        <td width="50%" class="stack-column-center">
+                            <label for="password" class="formLabel"><b>password</b></label>
+                        </td>
+                        <td width="50%" class="stack-column-center">
+                            <input type="password" name="password" style="margin-bottom: 50px;" required>
+                        </td>
+                    </tr>
+                    <tr style="display: flex; flex-direction: column;">
+                        <td width="50%" class="stack-column-center" style="align-self: center; padding-bottom: 10px;">
+                            <span>
+                                <button type="submit"><span class="buttonText">LOG IN</span></button>
+                            </span>
+                        </td>
+                    </tr>
+                </form>
+                </tr>
+            </table>
+        </div>
 	</body>
 </html>

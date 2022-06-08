@@ -2,73 +2,71 @@
   box-sizing: border-box;
 }
 
-  body {
-    font-size: 24px;
-    background: rgba(102,119,204,1);
-  }
+body {
+  font-size: 24px;
+  background: rgba(102,119,204,1);
+}
 
-  input[type=text], input[type=password] {
-    width: 575px;
-    height: 83px;
-    color: rgba(255,255,255,1);
-    background: rgba(255,187,147,1);
-    opacity: 1;
-    position: absolute;
-    font-weight: Medium;
-    font-size: 50px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    padding: 10px;
-    overflow: hidden;
-  }
-  
-  input[type=text]:focus, input[type=password]:focus {
-    background: rgba(223,164,129,1);
-    outline: none;
-  }
+.logo {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
 
-  .formLabel {
-    width: 206px;
-    color: rgba(255,255,255,1);
-    font-family: Vibur;
-    font-weight: Medium;
-    font-size: 50px;
-    opacity: 1;
-    position: absolute;
-    text-align: center;
-    padding-bottom: 5px;
-  }
+input[type=text], input[type=password] {
+  width: 600px;
+  height: 80px;
+  color: rgba(255,255,255,1);
+  background: rgba(255,187,147,1);
+  opacity: 1;
+  position: relative;
+  font-weight: Medium;
+  font-size: 50px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 10px;
+  overflow: hidden;
+}
 
-  button {
-    width: 284px;
-    height: 76px;
-    background: rgba(255,138,101,1);
-    opacity: 1;
-    position: absolute;
-    border-radius: 30px;
-  }
+input[type=text]:focus, input[type=password]:focus {
+  background: rgba(223,164,129,1);
+  outline: none;
+}
 
-  button:hover {
-    background: rgba(223,121,88,1);
-    cursor: pointer;
-  }
+.formLabel {
+  color: rgba(255,255,255,1);
+  font-family: Kdam Thmor Pro;
+  font-weight: Medium;
+  font-size: 50px;
+  opacity: 1;
+  position: relative;
+  text-align: center;
+}
 
-  .buttonText {
-    width: 197px;
-    color: rgba(0,0,0,1);
-    font-family: Vibur;
-    font-weight: Medium;
-    font-size: 30px;
-    opacity: 1;
-    text-align: center;
-  }
+button {
+  width: 300px;
+  height: 80px;
+  background: rgba(255,138,101,1);
+  opacity: 1;
+  position: relative;
+  border-radius: 30px;
+}
 
-  .logo {
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    position: absolute;
-    overflow: hidden;
-  }
+button:hover {
+  background: rgba(223,121,88,1);
+  cursor: pointer;
+}
+
+.buttonText {
+  width: 300px;
+  color: rgba(0,0,0,1);
+  font-family: Kdam Thmor Pro;
+  font-weight: Medium;
+  font-size: 30px;
+  opacity: 1;
+  text-align: center;
+}
