@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>In My Opinion</title>
+        <link rel="icon" type="image/x-icon" href="resources/images/imo_logo.png">
+		<link href="resources/styles/home.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	</head>
+	<body>
+		<header class="p-3 mb-3 border-bottom">
+			<div class="container">
+				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+					<a href="/" class="d-flex col-lg-3 align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+					    <img src="resources/images/imo_logo.png" class="logo"><span class="fs-4">InMyOpinion</span>
+					</a>
+					<form class="nav col-12 col-lg-6 me-lg-auto mb-2 justify-content-center mb-md-0" role="search">
+						<input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+					</form>
+					<div class="dropdown text-end col-lg-3 align-items-center">
+						<a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+						    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle rounded-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                            </svg>
+						</a>
+						<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+							<li><a class="dropdown-item active" href="#">Home</a></li>
+							<li><a class="dropdown-item" href="#">Topics</a></li>
+							<li><a class="dropdown-item" href="#">Profile</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">Sign out</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-around border-bottom">
+                <div class="col-lg-auto col-12">
+                    <button class="btn btn-primary col-12" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                            <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+                          </svg>
+                    </button>
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header border-bottom">
+                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Your topics</h5>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <form role="search" class="pb-3">
+                                <input type="search" class="form-control" placeholder="Search topics..." aria-label="Search">
+                            </form>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action active">Topic 1</a>
+                                <a href="#" class="list-group-item list-group-item-action">Topic 2</a>
+                                <a href="#" class="list-group-item list-group-item-action">Topic 3</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-11">
+                    <h1 class="topic-name" style="margin: 0 !important;">Topic name</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pt-4">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center justify-content-center justify-content-lg-start text-dark text-decoration-none">
+                            <div class="d-flex flex-wrap align-items-center col-1">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="text-dark text-decoration-none upvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <h5 class="pb-2 pt-1" style="margin: 0 !important;">-54</h5>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <a href="#" class="text-dark text-decoration-none downvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <h5 class="card-title">Vidi jebacke stranice, svaka vam cast</h5>
+                                <p class="card-text">by: aldinK</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="pt-4">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center justify-content-center justify-content-lg-start text-dark text-decoration-none">
+                            <div class="d-flex flex-wrap align-items-center col-1">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="text-dark text-decoration-none upvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <h5 class="pb-2 pt-1" style="margin: 0 !important;">512</h5>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <a href="#" class="text-dark text-decoration-none downvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <h5 class="card-title">Sve je to dobro al ovo kurcu ne valja</h5>
+                                <p class="card-text">by: amelaV</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="pt-4">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center justify-content-center justify-content-lg-start text-dark text-decoration-none">
+                            <div class="d-flex flex-wrap align-items-center col-1">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="text-dark text-decoration-none upvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <h5 class="pb-2 pt-1" style="margin: 0 !important;">14</h5>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <a href="#" class="text-dark text-decoration-none downvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <h5 class="card-title">5 razloga zasto padamo SE</h5>
+                                <p class="card-text">by: samirS</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="pt-4">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center justify-content-center justify-content-lg-start text-dark text-decoration-none">
+                            <div class="d-flex flex-wrap align-items-center col-1">
+                                <div class="col-12 text-center">
+                                    <a href="#" class="text-dark text-decoration-none upvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <h5 class="pb-2 pt-1" style="margin: 0 !important;">2713</h5>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <a href="#" class="text-dark text-decoration-none downvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <h5 class="card-title">Kako trehnut iz HCI</h5>
+                                <p class="card-text">by: VSelma</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</html>

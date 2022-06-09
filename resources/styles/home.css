@@ -1,0 +1,67 @@
+.container {
+	font-family: Kdam Thmor Pro !important;
+	font-weight: Medium;
+}
+
+.logo {
+	height: 32px;
+	width: 43px;
+}
+
+.active {
+	background-color: #6677cc !important;
+	color: #ffffff !important;
+}
+
+.btn {
+	background-color: #c0cfff !important;
+	border-color: #c0cfff !important;
+	color: #000000 !important;
+}
+
+.btn:hover {
+	background-color: #6677cc !important;
+	border-color: #6677cc !important;
+	color: #ffffff !important;
+}
+
+.list-group-item:hover {
+	background-color: #c0cfff !important;
+	color: #000000 !important;
+}
+
+.topic-name {
+	color: #ff8a65 !important;
+}
+
+.upvote:hover {
+	color: #6677cc !important;
+}
+
+.downvote:hover {
+	color: #ff8a65 !important;
+}
+
+.bi {
+	vertical-align: -.125em;
+	fill: currentColor;
+}
+
+.nav {
+	display: flex;
+	flex-wrap: nowrap;
+	padding-bottom: 1rem;
+	margin-top: -1px;
+	overflow-x: auto;
+	text-align: center;
+	white-space: nowrap;
+	-webkit-overflow-scrolling: touch;
+}
+
+.text-small {
+	font-size: 85%;
+}
+
+.dropdown-toggle {
+	outline: 0;
+}

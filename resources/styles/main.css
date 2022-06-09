@@ -1,72 +1,74 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-size: 24px;
-  background: rgba(102,119,204,1);
+	font-size: 24px;
+	background-color: #6677cc;
 }
 
 .logo {
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  position: relative;
-  overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
 }
 
 input[type=text], input[type=password] {
-  width: 600px;
-  height: 80px;
-  color: rgba(255,255,255,1);
-  background: rgba(255,187,147,1);
-  opacity: 1;
-  position: relative;
-  font-weight: Medium;
-  font-size: 50px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+	color: #ffffff;
+	background-color: #ffbb93;
+	opacity: 1;
+	position: relative;
   padding: 10px;
-  overflow: hidden;
+	overflow: hidden;
+  font-family: Kdam Thmor Pro;
+	font-weight: Medium;
+  border-width: 2px;
+	border-style: inset;
+	border-top-color: #767676;
+	border-left-color: #767676;
+	border-right-color: #858585;
+	border-bottom-color: #858585;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
 }
 
 input[type=text]:focus, input[type=password]:focus {
-  background: rgba(223,164,129,1);
-  outline: none;
+	background-color: #dfa481;
+	outline: none;
 }
 
-.formLabel {
-  color: rgba(255,255,255,1);
-  font-family: Kdam Thmor Pro;
-  font-weight: Medium;
-  font-size: 50px;
-  opacity: 1;
-  position: relative;
-  text-align: center;
+.form-label {
+	color: #ffffff;
+	font-family: Kdam Thmor Pro;
+	font-weight: Medium;
+	font-size: 50px;
+	opacity: 1;
+	position: relative;
+	text-align: center;
 }
 
 button {
-  width: 300px;
-  height: 80px;
-  background: rgba(255,138,101,1);
-  opacity: 1;
-  position: relative;
-  border-radius: 30px;
+	background-color: #ff8a65;
+	opacity: 1;
+	position: relative;
+	border-radius: 30px;
 }
 
 button:hover {
-  background: rgba(223,121,88,1);
-  cursor: pointer;
+	background-color: #df7958;
+	cursor: pointer;
 }
 
-.buttonText {
-  width: 300px;
-  color: rgba(0,0,0,1);
-  font-family: Kdam Thmor Pro;
-  font-weight: Medium;
-  font-size: 30px;
-  opacity: 1;
-  text-align: center;
+.button-text {
+	width: 300px;
+	color: #000000;
+	font-family: Kdam Thmor Pro;
+	font-weight: Medium;
+	font-size: 30px;
+	opacity: 1;
+	text-align: center;
 }
