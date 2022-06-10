@@ -3,6 +3,35 @@
 	font-weight: Medium;
 }
 
+.logo {
+	width: 43px;
+	height: 32px;
+}
+
+.nav {
+	display: flex;
+	flex-wrap: nowrap;
+	padding-bottom: 1rem;
+	margin-top: -1px;
+	overflow-x: auto;
+	text-align: center;
+	white-space: nowrap;
+	-webkit-overflow-scrolling: touch;
+}
+
+.text-small {
+	font-size: 85%;
+}
+
+.dropdown-toggle {
+	outline: 0;
+}
+
+.bi {
+	vertical-align: -.125em;
+	fill: currentColor;
+}
+
 .active {
 	background-color: #6677cc !important;
 	color: #ffffff !important;
@@ -27,4 +56,28 @@ a:hover {
 .list-group-item:hover {
 	background-color: #c0cfff !important;
 	color: #000000 !important;
+}
+
+.username {
+	color: #6677cc !important;
+}
+
+.username:hover {
+    color: #4055bf !important;
+}
+
+.topic-name {
+	color: #ff8a65 !important;
+}
+
+.topic-name:hover {
+	color: #ff6332 !important;
+}
+
+.upvote:hover {
+	color: #6677cc !important;
+}
+
+.downvote:hover {
+	color: #ff8a65 !important;
 }
