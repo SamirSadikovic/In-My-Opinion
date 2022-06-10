@@ -1,33 +1,6 @@
-.container {
-	font-family: Kdam Thmor Pro !important;
-	font-weight: Medium;
-}
-
 .logo {
-	height: 32px;
 	width: 43px;
-}
-
-.active {
-	background-color: #6677cc !important;
-	color: #ffffff !important;
-}
-
-.btn {
-	background-color: #c0cfff !important;
-	border-color: #c0cfff !important;
-	color: #000000 !important;
-}
-
-.btn:hover {
-	background-color: #6677cc !important;
-	border-color: #6677cc !important;
-	color: #ffffff !important;
-}
-
-.list-group-item:hover {
-	background-color: #c0cfff !important;
-	color: #000000 !important;
+	height: 32px;
 }
 
 .topic-name {

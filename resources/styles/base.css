@@ -1,0 +1,30 @@
+.container {
+	font-family: Kdam Thmor Pro !important;
+	font-weight: Medium;
+}
+
+.active {
+	background-color: #6677cc !important;
+	color: #ffffff !important;
+}
+
+.btn {
+	background-color: #c0cfff !important;
+	border-color: #c0cfff !important;
+	color: #000000 !important;
+}
+
+.btn:hover {
+	background-color: #6677cc !important;
+	border-color: #6677cc !important;
+	color: #ffffff !important;
+}
+
+a:hover {
+    color: #6677cc !important;
+}
+
+.list-group-item:hover {
+	background-color: #c0cfff !important;
+	color: #000000 !important;
+}
