@@ -20,7 +20,7 @@
 						<input type="search" class="form-control" placeholder="Search..." aria-label="Search">
 					</form>
 					<div class="dropdown text-end col-lg-3 align-items-center">
-						<a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+						<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 						    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle rounded-circle" viewBox="0 0 16 16">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                                 <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -38,17 +38,17 @@
 			</div>
 		</header>
         <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-around border-bottom">
-                <div class="col-lg-auto col-12">
-                    <button class="btn btn-primary col-12" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start border-bottom">
+                <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center justify-content-lg-start">
+                    <a href="#offcanvasTopics" class="m-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTopics" aria-controls="offcanvasTopics">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
                             <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
                             <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
-                          </svg>
-                    </button>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                        </svg>
+                    </a>
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasTopics" aria-labelledby="offcanvasTopicsLabel">
                         <div class="offcanvas-header border-bottom">
-                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Your topics</h5>
+                            <h5 class="offcanvas-title" id="offcanvasTopicsLabel">Your topics</h5>
                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
@@ -62,13 +62,41 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-11">
-                    <h1 style="margin: 0 !important;">
+                    <h1 class="m-2" style="margin: 0 !important;">
                         <a href="#" class="text-decoration-none">
                             <span class="topic-name">Topic name</span>
                         </a>
                     </h1>
+                </div>
+                <div class="col-12 col-lg-9 d-flex align-items-center justify-content-center justify-content-lg-end">
+                    <button type="button" class="btn btn-primary subscriber col-12 col-lg-1 my-2 d-none"></button>
+                    <button type="button" class="btn btn-primary visitor col-12 col-lg-1 my-2">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="accordion" id="postAccordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="createPostDrop">
+                    <button class="accordion-button collapsed fs-5 text-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <span style="color: #6677cc !important;">Create a new post</span>
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#postAccordion">
+                    <div class="accordion-body d-flex flex-wrap flex-row align-items-center justify-content-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle rounded-circle m-2 col-12 col-lg-1" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                        <form class="d-flex flex-wrap flex-row align-items-center justify-content-center justify-content-lg-start col-12 col-lg-10">
+                            <div class="d-flex flex-column m-2 col-12 col-lg-10">
+                                <input type="text" class="form-control mb-1" id="postTitle" placeholder="Post title">
+                                <textarea class="form-control mt-1" id="postBody" rows="3" placeholder="Post body"></textarea>
+                            </div>
+                            <button class="btn btn-primary m-2 col-12 col-lg-1 align-self-end" type="submit">Post</button>
+                        </form>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>

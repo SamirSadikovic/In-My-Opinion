@@ -81,3 +81,33 @@ a:hover {
 .downvote:hover {
 	color: #ff8a65 !important;
 }
+
+.subscriber {
+	background-color: #6677cc !important;
+	border-color: #6677cc !important;
+	color: #ffffff !important;
+}
+
+.subscriber::after {
+	content: "Joined";
+}
+
+.subscriber:hover::after {
+	content: "Leave";
+}
+
+.subscriber:hover {
+	background-color: #ff0c26 !important;
+	border-color: #ff0c26 !important;
+	color: #ffffff !important;
+}
+
+.visitor {
+	background-color: transparent !important;
+	border-color: #6677cc !important;
+}
+
+.visitor:hover {
+	background-color: #6677cc !important;
+	color: #ffffff !important;
+}
