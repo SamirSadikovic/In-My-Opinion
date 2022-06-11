@@ -1,0 +1,436 @@
+* {
+    box-sizing: border-box;
+  }
+  
+    body {
+      font-size: 24px;
+      background: rgba(102,119,204,1);
+    }
+  
+    input[type=text], input[type=password] {
+      width: 575px;
+      height: 83px;
+      color: rgba(255,255,255,1);
+      background: rgba(255,187,147,1);
+      opacity: 1;
+      position: absolute;
+      font-weight: Medium;
+      font-size: 50px;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      padding: 10px;
+      overflow: hidden;
+    }
+    
+    input[type=text]:focus, input[type=password]:focus {
+      background: rgba(223,164,129,1);
+      outline: none;
+    }
+  
+    .formLabel {
+      width: 206px;
+      color: rgba(255,255,255,1);
+      font-family: Kdam Thmor Pro;
+      font-weight: Medium;
+      font-size: 50px;
+      opacity: 1;
+      position: absolute;
+      text-align: center;
+      padding-bottom: 5px;
+    }
+  
+    button {
+      width: 284px;
+      height: 76px;
+      background: rgba(255,138,101,1);
+      opacity: 1;
+      position: absolute;
+      border-radius: 30px;
+    }
+  
+    button:hover {
+      background: rgba(223,121,88,1);
+      cursor: pointer;
+    }
+  
+    .buttonText {
+      width: 197px;
+      color: rgba(0,0,0,1);
+      font-family: Kdam Thmor Pro;
+      font-weight: Medium;
+      font-size: 30px;
+      opacity: 1;
+      text-align: center;
+    }
+  
+    .logo {
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      position: absolute;
+      overflow: hidden;
+    }
+
+    /* register-login */
+    .clouds {
+        width: 401px;
+        height: 300px;
+        background: url("../images/clouds.png");
+        top: 247px;
+        left: 151px;
+    }
+    
+    .imo {
+        width: 183px;
+        height: 57px;
+        background: url("../images/imo.png");
+        top: 310px;
+        left: 330px;
+    }
+    
+    .dots {
+        width: 66px;
+        height: 9px;
+        background: url("../images/dots.png");
+        top: 410px;
+        left: 220px;
+    }
+    
+    @media only screen and (max-width: 1080px) {
+        body {
+          background-color: lightblue;
+        }
+      }
+
+      /* home */
+
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      
+      input[type=text] {
+        width: 600px;
+        height: 50px;
+          font-size: 24px;
+      }
+      
+      button {
+        width: 300px;
+        height: 80px;
+      }
+      
+      .logo {
+        width: 150px;
+        height: 125px;
+      }
+      
+      .search-form {
+        display: flex;
+        flex-direction: row;
+      }
+      
+      .search-bar {
+        width: 565px !important;
+        border-bottom-right-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        border-right-width: 0 !important;
+      }
+      
+      .search-icon {
+        width: 44px;
+        height: 50px;
+        background: #ff8a65;
+        border-width: 2px;
+        border-style: inset;
+        border-top-color: #767676;
+        border-left-color: #767676;
+        border-right-color: #858585;
+        border-bottom-color: #858585;
+        border-bottom-right-radius: 15px !important;
+        border-top-right-radius: 15px !important;
+      }
+      
+      .topnav {
+        width: 300px;
+        height: 50px;
+        background-color: #333333;
+        opacity: 0.8;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0 10px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+      
+      .nav-link {
+        width: 60px;
+        text-align: center;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+      }
+      
+      .nav-icon {
+        height: 40px;
+        width: 40px;
+        margin-top: 5px;
+      }
+      
+      .active {
+        background: #4D4D4D;
+        height: 100%;
+      }
+      
+      .topicListOutsideWrapper {
+        width: 500px;
+        height: 800px;
+        background: #ff8a65;
+        opacity: 1;
+        position: absolute;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        overflow: hidden;
+      }
+      
+      .topicListInsideWrapper {
+        width: 500px;
+        height: 600px;
+        background-color: #ffbb93;
+        opacity: 1;
+        position: absolute;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        overflow: hidden;
+      }
+      
+      .topicListTitle {
+        color: #ffffff;
+        position: absolute;
+        font-family: Kdam Thmor Pro;
+        font-weight: Medium;
+        font-size: 50px;
+        opacity: 1;
+        text-align: center;
+      }
+      
+      .topicNameWrapper {
+        width: 400px;
+        height: 80px;
+        background-color: #c0cfff;
+        opacity: 1;
+        position: absolute;
+        overflow: hidden;
+      }
+      
+      .topicName {
+        color: #000000;
+        position: absolute;
+        font-family: Kdam Thmor Pro;
+        font-weight: Medium;
+        font-size: 30px;
+        opacity: 1;
+        text-align: center;
+      }
+      
+      .postWrapper {
+        width: 600px;
+        height: 150px;
+        background-color: #ff8a65;
+        opacity: 1;
+        position: absolute;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        overflow: hidden;
+      }
+      
+      .postTitle {
+        color: #000000;
+        position: relative;
+        font-family: Kdam Thmor Pro;
+        font-weight: Medium;
+        font-size: 50px;
+        opacity: 1;
+        text-align: center;
+      }
+      
+      .username {
+        color: #ffffff;
+        position: absolute;
+        font-family: Kdam Thmor Pro;
+        font-weight: Medium;
+        font-size: 30px;
+        opacity: 1;
+        text-align: center;
+      }
+      
+      .votes {
+        color: #000000;
+        position: absolute;
+        font-family: Kdam Thmor Pro;
+        font-weight: Medium;
+        font-size: 30px;
+        opacity: 1;
+        text-align: center;
+      }
+      
+      .voteArrow {
+      
+      }
+
+      /* register login */
+      .container {
+        width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .logo {
+        width: 400px;
+        height: 300px;
+      }
+      
+      input[type=text], input[type=password] {
+        width: 600px;
+        height: 80px;
+          font-size: 50px;
+      }
+      
+      button {
+        width: 300px;
+        height: 80px;
+      }
+      
+      @media only screen and (max-width: 1200px) {
+        .container {
+          width: 600px;
+          margin: 0 auto;
+        }
+      
+        .stack-column-center {
+          display: block !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          direction: ltr !important;
+        }
+      
+        .stack-column-center {
+          text-align: center !important;
+        }
+      
+        #email-label-cell {
+          padding-top: 80px;
+        }
+      }
+      
+      @media only screen and (max-width: 620px) {
+        .container {
+          width: 300px;
+          margin: 0 auto;
+        }
+      
+        .logo {
+          width: 300px;
+          height: 200px;
+        }
+      
+        input[type=text],
+        input[type=password] {
+          width: 300px;
+        }
+      
+        button {
+          width: 250px;
+        }
+      }
+
+      /* main */
+      * {
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-size: 24px;
+        background-color: #6677cc;
+      }
+      
+      .logo {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      input[type=text], input[type=password] {
+        color: #ffffff;
+        background-color: #ffbb93;
+        opacity: 1;
+        position: relative;
+        padding: 10px;
+        overflow: hidden;
+        font-family: Kdam Thmor Pro;
+        font-weight: Medium;
+        border-width: 2px;
+        border-style: inset;
+        border-top-color: #767676;
+        border-left-color: #767676;
+        border-right-color: #858585;
+        border-bottom-color: #858585;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+      
+      input[type=text]:focus, input[type=password]:focus {
+        background-color: #dfa481;
+        outline: none;
+      }
+      
+      .form-label {
+        color: #ffffff;
+        font-family: Kdam Thmor Pro;
+        font-weight: Medium;
+        font-size: 50px;
+        opacity: 1;
+        position: relative;
+        text-align: center;
+      }
+      
+      button {
+        background-color: #ff8a65;
+        opacity: 1;
+        position: relative;
+        border-radius: 30px;
+      }
+      
+      button:hover {
+        background-color: #df7958;
+        cursor: pointer;
+      }
+      
+      .button-text {
+        width: 300px;
+        color: #000000;
+        font-family: Kdam Thmor Pro;
+        font-weight: Medium;
+        font-size: 30px;
+        opacity: 1;
+        text-align: center;
+      }

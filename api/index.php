@@ -31,7 +31,7 @@ Flight::map('query', function($name, $defaultValue = NULL) {
 });
 
 Flight::route('GET /', function(){
-    Flight::redirect('../dummy.html');
+    Flight::redirect('../index.html');
 });
 
 Flight::start();
