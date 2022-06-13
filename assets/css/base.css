@@ -27,6 +27,16 @@
 	outline: 0;
 }
 
+.nav-active {
+	background-color: #6677cc !important;
+	color: #ffffff !important;
+}
+
+.nav-active:hover {
+	background-color: #c0cfff !important;
+	color: #ffffff !important;
+}
+
 .bi {
 	vertical-align: -.125em;
 	fill: currentColor;
@@ -51,6 +61,7 @@
 
 a:hover {
     color: #6677cc !important;
+	cursor: pointer !important;
 }
 
 .list-group-item:hover {
@@ -72,15 +83,23 @@ a:hover {
 
 .upvote:hover {
 	color: #6677cc !important;
+	cursor: pointer !important;
 }
 
 .downvote:hover {
 	color: #ff8a65 !important;
+	cursor: pointer !important;
 }
 
 .subscriber {
 	background-color: #6677cc !important;
 	border-color: #6677cc !important;
+	color: #ffffff !important;
+}
+
+.subscriber:active {
+	background-color: #ffffff !important;
+	border-color: #ffffff !important;
 	color: #ffffff !important;
 }
 
@@ -101,6 +120,12 @@ a:hover {
 .visitor {
 	background-color: transparent !important;
 	border-color: #6677cc !important;
+}
+
+.visitor:active {
+	background-color: #ffffff !important;
+	border-color: #ffffff !important;
+	color: #ffffff !important;
 }
 
 .visitor:hover {

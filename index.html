@@ -9,7 +9,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	</head>
-	<body>
+	<body onload="indexLoad();">
         <header class="p-3 mb-3 border-bottom">
 			<div class="container">
 				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -17,7 +17,7 @@
 					    <img src="assets/images/imo_logo.png" class="logo"><span class="fs-4">InMyOpinion</span>
 					</a>
 					<form class="col-12 col-lg-6 me-lg-auto mb-2 justify-content-center mb-md-0" role="search">
-						<input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+						<input type="search" class="form-control" placeholder="Search topics..." aria-label="Search">
 					</form>
 					<div class="dropdown text-end col-lg-3 align-items-center">
 						<a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,7 +27,7 @@
                             </svg>
 						</a>
 						<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-							<li><a class="dropdown-item active" href="../api/">Home</a></li>
+							<li><a class="dropdown-item nav-active" href="api/">Home</a></li>
 							<li><a class="dropdown-item" href="pages/topics.html">Topics</a></li>
 							<li><a class="dropdown-item" href="pages/profile.html">Profile</a></li>
 							<li><hr class="dropdown-divider"></li>
@@ -53,26 +53,26 @@
                         </div>
                         <div class="offcanvas-body">
                             <form role="search" class="pb-3">
-                                <input type="search" class="form-control" placeholder="Search topics..." aria-label="Search">
+                                <input type="search" class="form-control" placeholder="Search your topics..." aria-label="Search">
                             </form>
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action active">Topic 1</a>
+                            <div class="list-group" id="yourTopicsList">
+                                <!-- <a href="#" class="list-group-item list-group-item-action active">Topic 1</a>
                                 <a href="#" class="list-group-item list-group-item-action">Topic 2</a>
-                                <a href="#" class="list-group-item list-group-item-action">Topic 3</a>
+                                <a href="#" class="list-group-item list-group-item-action">Topic 3</a> -->
                             </div>
                         </div>
                     </div>
-                    <h1 class="m-2" style="margin: 0 !important;">
-                        <span class="topic-name">Topic name</span>
+                    <h1 class="col-auto m-2" style="margin: 0 !important;">
+                        <span class="topic-name" id="topicNameHeader">Topic name</span>
                     </h1>
                 </div>
                 <div class="col-12 col-lg-8 d-flex align-items-center justify-content-center justify-content-lg-end">
-                    <button type="button" class="btn btn-primary subscriber col-12 col-lg-2 my-2"></button>
-                    <button type="button" class="btn btn-primary visitor col-12 col-lg-1 my-2 d-none">Join</button>
+                    <button type="button" class="btn btn-primary subscriber col-12 col-lg-2 my-2" id="leaveButton"></button>
+                    <button type="button" class="btn btn-primary visitor col-12 col-lg-2 my-2" id="joinButton">Join</button>
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" id="createPostContainer">
             <div class="accordion" id="postAccordion">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="createPostDrop">
@@ -86,7 +86,7 @@
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                         </svg>
-                        <form class="d-flex flex-wrap flex-row align-items-center justify-content-center justify-content-lg-start col-12 col-lg-10">
+                        <form class="d-flex flex-wrap flex-row align-items-center justify-content-center justify-content-lg-start col-12 col-lg-10" id="submitPostForm" onsubmit="submitPost(this)">
                             <div class="d-flex flex-column m-2 col-12 col-lg-10">
                                 <input type="text" class="form-control mb-1" id="postTitle" placeholder="Post title">
                                 <textarea class="form-control mt-1" id="postBody" rows="3" placeholder="Post body"></textarea>
@@ -98,8 +98,8 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="pt-4">
+        <div class="container" id="topicPostContainer">
+            <!-- <div class="pt-4">
                 <div class="card">
                     <div class="card-body d-flex align-items-center justify-content-center justify-content-lg-start">
                         <div class="d-flex flex-wrap align-items-center col-1">
@@ -120,94 +120,14 @@
                             </div>
                         </div>
                         <div class="col-11">
-                            <h5 class="card-title"><a href="post.html" class="text-dark text-decoration-none">Kako trehnut iz HCI</a></h5>
-                            <p class="card-text">by: <a href="profile.html" class="text-decoration-none username">VSelma</a></p>
+                            <h5 class="card-title"><a href="pages/post.html" class="text-dark text-decoration-none">Kako trehnut iz HCI</a></h5>
+                            <p class="card-text">by: <a href="pages/profile.html" class="text-decoration-none username">VSelma</a></p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="pt-4">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center justify-content-center justify-content-lg-start">
-                        <div class="d-flex flex-wrap align-items-center col-1">
-                            <div class="col-12 text-center">
-                                <a href="#" class="text-dark text-decoration-none upvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="col-12 text-center">
-                                <h5 class="pb-2 pt-1" style="margin: 0 !important;">2713</h5>
-                            </div>
-                            <div class="col-12 text-center">
-                                <a href="#" class="text-dark text-decoration-none downvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-11">
-                            <h5 class="card-title"><a href="post.html" class="text-dark text-decoration-none">Kako trehnut iz HCI</a></h5>
-                            <p class="card-text">by: <a href="profile.html" class="text-decoration-none username">VSelma</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pt-4">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center justify-content-center justify-content-lg-start">
-                        <div class="d-flex flex-wrap align-items-center col-1">
-                            <div class="col-12 text-center">
-                                <a href="#" class="text-dark text-decoration-none upvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="col-12 text-center">
-                                <h5 class="pb-2 pt-1" style="margin: 0 !important;">2713</h5>
-                            </div>
-                            <div class="col-12 text-center">
-                                <a href="#" class="text-dark text-decoration-none downvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-11">
-                            <h5 class="card-title"><a href="post.html" class="text-dark text-decoration-none">Kako trehnut iz HCI</a></h5>
-                            <p class="card-text">by: <a href="profile.html" class="text-decoration-none username">VSelma</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pt-4">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center justify-content-center justify-content-lg-start">
-                        <div class="d-flex flex-wrap align-items-center col-1">
-                            <div class="col-12 text-center">
-                                <a href="#" class="text-dark text-decoration-none upvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="col-12 text-center">
-                                <h5 class="pb-2 pt-1" style="margin: 0 !important;">2713</h5>
-                            </div>
-                            <div class="col-12 text-center">
-                                <a href="#" class="text-dark text-decoration-none downvote"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-11">
-                            <h5 class="card-title"><a href="post.html" class="text-dark text-decoration-none">Kako trehnut iz HCI</a></h5>
-                            <p class="card-text">by: <a href="profile.html" class="text-decoration-none username">VSelma</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> -->
         </div>
 	</body>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/base.js"></script>
 </html>
