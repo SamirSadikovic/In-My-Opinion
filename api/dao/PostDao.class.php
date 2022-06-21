@@ -26,8 +26,9 @@ class PostDao extends BaseDao{
             $this->updateComposite('post_votes', ['account_id' => $account_id, 'post_id' => $id], ['type' => $type]);
         }
 
-        $account = new AccountDao();
-        $account->updatePoints($id, $type);
+        // not necessary due to triggers in db
+        // $account = new AccountDao();
+        // $account->updatePoints($id, $type);
     }
 
     public function getPosts($search, $offset, $limit, $order = "-id") {

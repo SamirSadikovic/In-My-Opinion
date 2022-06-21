@@ -26,8 +26,6 @@ class AccountService extends BaseService{
         else if(!isset($account['password']))
             throw new Exception("Password is not set.");
 
-        $account['token'] = md5(random_bytes(16));
-
         try {
             parent::add($account);
         } catch(Exception $e) {
@@ -37,15 +35,6 @@ class AccountService extends BaseService{
                 throw $e;
         }
         return $account;
-    }
-
-    public function confirm($token) {
-        $account = $this->dao->getAccountByToken($token);
-
-        if(!isset($account['id']))
-            throw new Exception("Invalid token.");
-        
-        $this->dao->update($account['id'], ['status' => "ACTIVE"]);
     }
 
     public function getSubscriptions($id) {

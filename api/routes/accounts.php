@@ -20,11 +20,6 @@ Flight::route('POST /accounts/register', function(){
     Flight::json($result);
 });
 
-Flight::route('GET /accounts/confirm/@token', function($token){
-    Flight::accountService()->confirm($token);
-    Flight::json(['message' => "Your account has been activated."]);
-});
-
 Flight::route('PUT /accounts/@id', function($id){
     $data = Flight::request()->data->getData();
     $account = Flight::accountService()->update($id, $data);

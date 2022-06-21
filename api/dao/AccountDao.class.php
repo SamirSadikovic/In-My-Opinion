@@ -24,14 +24,15 @@ class AccountDao extends BaseDao{
                             WHERE subscriptions.account_id = :id", ['id' => $id]);
     }
 
-    public function updatePoints($post_id, $type) {
+    // not necessary due to triggers in db
+/*     public function updatePoints($post_id, $type) {
         $accountToUpdate = ($this->queryUnique("SELECT a.id, a.points 
                                                 FROM posts p
                                                 JOIN accounts a ON a.id = p.account_id
                                                 WHERE p.id = :post_id", ['post_id' => $post_id]));
 
     $this->update($accountToUpdate['id'], ['points' => $accountToUpdate['points'] + $type]);
-    }
+    } */
 
     public function getPoints($id) {
         return array_values($this->queryUnique("SELECT points FROM accounts WHERE id = :id", ['id' => $id]))[0];
@@ -46,10 +47,6 @@ class AccountDao extends BaseDao{
                             LIKE CONCAT('%', :username, '%') 
                             ORDER BY ${orderColumn} ${orderDirection}
                             LIMIT ${limit} OFFSET ${offset}", ['username' => strtolower($search)]);
-    }
-
-    public function getAccountByToken($token) {
-        return $this->queryUnique("SELECT * FROM accounts WHERE token = :token", ['token' => $token]);
     }
 
 }

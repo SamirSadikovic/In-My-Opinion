@@ -5,22 +5,10 @@ error_reporting(E_ALL);
 
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
-require_once dirname(__FILE__) . '/routes/accounts.php';
-require_once dirname(__FILE__) . '/routes/topics.php';
-require_once dirname(__FILE__) . '/routes/posts.php';
-require_once dirname(__FILE__) . '/routes/comments.php';
-
 require_once dirname(__FILE__) . '/services/AccountService.class.php';
 require_once dirname(__FILE__) . '/services/TopicService.class.php';
 require_once dirname(__FILE__) . '/services/PostService.class.php';
 require_once dirname(__FILE__) . '/services/CommentService.class.php';
-
-Flight::set('flight.log_errors', true);
-
-Flight::register('accountService', 'AccountService');
-Flight::register('topicService', 'TopicService');
-Flight::register('postService', 'PostService');
-Flight::register('commentService', 'CommentService');
 
 Flight::map('query', function($name, $defaultValue = NULL) {
     $request = Flight::request();
@@ -30,8 +18,24 @@ Flight::map('query', function($name, $defaultValue = NULL) {
     return $queryParam;
 });
 
+Flight::register('accountDao', 'AccountDao');
+Flight::register('commentDao', 'CommentDao');
+Flight::register('postDao', 'PostDao');
+Flight::register('topicDao', 'TopicDao');
+
+Flight::register('accountService', 'AccountService');
+Flight::register('topicService', 'TopicService');
+Flight::register('postService', 'PostService');
+Flight::register('commentService', 'CommentService');
+
+require_once dirname(__FILE__) . '/routes/accounts.php';
+require_once dirname(__FILE__) . '/routes/topics.php';
+require_once dirname(__FILE__) . '/routes/posts.php';
+require_once dirname(__FILE__) . '/routes/comments.php';
+
 Flight::route('GET /', function(){
-    Flight::redirect('../index.html');
+    // Flight::redirect('../index.html');
+    echo dirname(__FILE__) . '/routes/comments.php';
 });
 
 Flight::start();
