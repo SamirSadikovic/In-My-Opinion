@@ -11,26 +11,12 @@ class CommentDao extends BaseDao{
         $this->update($post_id, $comment, "post_id");
     }
 
-    /* Porbably not needed, will see in the future
-
-    public function updateByAccountId($account_id, $comment) {
-        $this->update($account_id, $comment, "account_id");
-    }
-
-    public function updateByCreationDate($date, $comment) {
-        $this->update($date, $comment, "DATE(created_on)");
-    }
-
-    */
-
     public function getComments($account, $offset, $limit, $order = "-id") {
         list($orderColumn, $orderDirection) = self::parseOrder($order);
-        
-        return $this->query("SELECT c.*, COALESCE(SUM(cv.type), 0) AS votes
-                            FROM comments c
-                            LEFT JOIN comment_votes cv ON cv.comment_id = c.id
-                            WHERE c.account_id = :account_id
-                            GROUP BY c.id
+        return $this->query("SELECT *, getCommentVotes(id) AS votes
+                            FROM comments
+                            WHERE account_id = :account_id
+                            GROUP BY id
                             ORDER BY ${orderColumn} ${orderDirection}
                             LIMIT ${limit} OFFSET ${offset}", ['account_id' => $account]);
     }
@@ -43,8 +29,8 @@ class CommentDao extends BaseDao{
         }
     }
 
-    public function getVotes($id) {
-        return $this->query("SELECT accounts.username
+    public function getVoters($id) {
+        return $this->query("SELECT accounts.*
                             FROM comment_votes
                             JOIN accounts ON accounts.id = comment_votes.account_id
                             JOIN comments ON comments.id = comment_votes.comment_id
@@ -53,10 +39,9 @@ class CommentDao extends BaseDao{
 
     //Override
     public function getById($id) {
-        return $this->queryUnique("SELECT c.*, COALESCE(SUM(cv.type), 0) AS votes
-                                FROM comments c
-                                LEFT JOIN comment_votes cv ON cv.comment_id = c.id
-                                WHERE c.id = :id", ['id' => $id]);
+        return $this->queryUnique("SELECT *, getCommentVotes(id) AS votes
+                                FROM comments
+                                WHERE id = :id", ['id' => $id]);
     }
 
     //Override
@@ -71,15 +56,12 @@ class CommentDao extends BaseDao{
             default:
                 throw new Exception("Invalid order format. First character should be '+' or '-'.");
         }
-        //$orderColumn = $this->connection->quote(substr($order, 1));
-        //TODO investigate this error
         
         $orderColumn = substr($order, 1);
 
-        return $this->query("SELECT c.*, COALESCE(SUM(cv.type), 0) AS votes
-                            FROM comments c
-                            LEFT JOIN comment_votes cv ON cv.comment_id = c.id
-                            GROUP BY c.id
+        return $this->query("SELECT *, getCommentVotes(id) AS votes
+                            FROM comments
+                            GROUP BY id
                             ORDER BY ${orderColumn} ${orderDirection} ".
                             "LIMIT ${limit} OFFSET ${offset}", []);
     }

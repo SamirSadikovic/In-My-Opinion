@@ -31,12 +31,11 @@ class PostService extends BaseService{
         return $this->dao->getAllComments($id);
     }
 
-    public function getVotes($id) {
-        return $this->dao->getVotes($id);
+    public function getVoters($id) {
+        return $this->dao->getVoters($id);
     }
 
     public function vote($id, $account_id, $type) {
         $this->dao->vote($id, $account_id, $type);
     }
-
 }

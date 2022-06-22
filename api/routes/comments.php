@@ -32,8 +32,8 @@ Flight::route('PUT /comments/post/@post_id', function($post_id){
     Flight::json(['message' => "Comments sucessfully updated."]);
 });
 
-Flight::route('GET /comments/votes/@id', function($id){
-    $votes = Flight::commentService()->getVotes($id);
+Flight::route('GET /comments/voters/@id', function($id){
+    $votes = Flight::commentService()->getVoters($id);
     Flight::json($votes);
 });
 

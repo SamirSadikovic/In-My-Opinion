@@ -27,12 +27,8 @@ class TopicService extends BaseService{
         return $this->dao->getAllPosts($id);
     }
 
-    public function getAdministrators($id) {
-        return $this->dao->getAdministrators($id);
-    }
-
-    public function setAdministrator($id, $account_id) {
-        return $this->dao->setAdministrator($id, $account_id);
+    public function getCreator($id) {
+        return $this->dao->getCreator($id);
     }
 
     public function getSubscribers($id) {

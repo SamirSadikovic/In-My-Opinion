@@ -38,10 +38,12 @@ class BaseDao {
     public function __construct($table) {
         $this->table = $table;
         try {
-            $this->connection = new PDO("mysql:host=" . Config::DB_HOST . ";dbname=" . Config::DB_SCHEME . ";port=" . Config::DB_PORT, Config::DB_USERNAME, Config::DB_PASSWORD);
+            $this->connection = new PDO("pgsql:host=" . Config::DB_HOST . ";dbname=" . Config::DB_SCHEME . ";port=" . Config::DB_PORT, Config::DB_USERNAME, Config::DB_PASSWORD);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e) {
-            throw $e;
+            // throw $e;
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
         }
     }
     
@@ -62,6 +64,10 @@ class BaseDao {
 
         $stmt= $this->connection->prepare($sql);
         $stmt->execute($entity);
+
+        if($table == 'subscriptions' || $table == 'post_votes' || $table == 'comment_votes')
+            return $entity;
+
         $entity['id'] = $this->connection->lastInsertId();
 
         return $entity;
@@ -102,7 +108,7 @@ class BaseDao {
 
     protected function query($query, $params) {
         $stmt = $this->connection->prepare($query);
-        $stmt->execute($params); 
+        $stmt->execute($params);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -136,8 +142,6 @@ class BaseDao {
             default:
                 throw new Exception("Invalid order format. First character should be '+' or '-'.");
         }
-        //$orderColumn = $this->connection->quote(substr($order, 1));
-        //TODO investigate this error
         
         $orderColumn = substr($order, 1);
 
@@ -148,5 +152,3 @@ class BaseDao {
     }
 
 }
-
-?>

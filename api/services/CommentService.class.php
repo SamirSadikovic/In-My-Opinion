@@ -27,8 +27,8 @@ class CommentService extends BaseService{
         $this->dao->updateByPost($post_id, $data);
     }
 
-    public function getVotes($id) {
-        return $this->dao->getVotes($id);
+    public function getVoters($id) {
+        return $this->dao->getVoters($id);
     }
 
     public function vote($id, $account_id, $type) {

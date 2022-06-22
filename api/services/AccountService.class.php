@@ -5,8 +5,6 @@ require_once dirname(__FILE__) . "/../dao/AccountDao.class.php";
 
 class AccountService extends BaseService{
 
-    private $smtpClient;
-
     public function __construct() {
         $this->dao = new AccountDao();
     }
@@ -31,6 +29,8 @@ class AccountService extends BaseService{
         } catch(Exception $e) {
             if(str_contains($e->getMessage(), "accounts.email_UNIQUE"))
                 throw new Exception("Account with the same email already exists: " . $account['email'], 400, $e);
+            else if(str_contains($e->getMessage(), "accounts.username_UNIQUE"))
+                throw new Exception("Account with the same username already exists: " . $account['username'], 400, $e);
             else
                 throw $e;
         }
@@ -45,4 +45,15 @@ class AccountService extends BaseService{
         return $this->dao->getPoints($id);
     }
 
+    public function getTopicCount($id) {
+        return $this->dao->getTopicCount($id);
+    }
+
+    public function getPostCount($id) {
+        return $this->dao->getPostCount($id);
+    }
+
+    public function getCommentCount($id) {
+        return $this->dao->getCommentCount($id);
+    }
 }

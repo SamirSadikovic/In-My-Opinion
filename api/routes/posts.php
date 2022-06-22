@@ -37,8 +37,8 @@ Flight::route('GET /posts/comments/@id', function($id){
     Flight::json($comments);
 });
 
-Flight::route('GET /posts/votes/@id', function($id){
-    $votes = Flight::postService()->getVotes($id);
+Flight::route('GET /posts/voters/@id', function($id){
+    $votes = Flight::postService()->getVoters($id);
     Flight::json($votes);
 });
 

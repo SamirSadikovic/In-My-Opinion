@@ -26,16 +26,11 @@ class TopicDao extends BaseDao{
                             LIMIT ${limit} OFFSET ${offset}", ['name' => strtolower($search)]);
     }
 
-    public function setAdministrator($id, $account_id) {
-        return $this->insert("administrators", ['topic_id' => $id, 'account_id' => $account_id]);
-    }
-
-    public function getAdministrators($id) {
-        return $this->query("SELECT accounts.username
-                            FROM administrators
-                            JOIN accounts ON accounts.id = administrators.account_id
-                            JOIN topics ON topics.id = administrators.topic_id
-                            WHERE topic_id = :id", ['id' => $id]);
+    public function getCreator($id) {
+        return $this->query("SELECT *
+                            FROM accounts
+                            JOIN topics ON topics.account_id = accounts.id
+                            WHERE topics.id = :id", ['id' => $id]);
     }
 
     public function subscribeAccount($id, $account_id) {
@@ -43,7 +38,7 @@ class TopicDao extends BaseDao{
     }
 
     public function getSubscribers($id) {
-        return $this->query("SELECT accounts.username
+        return $this->query("SELECT *
                             FROM subscriptions
                             JOIN accounts ON accounts.id = subscriptions.account_id
                             JOIN topics ON topics.id = subscriptions.topic_id

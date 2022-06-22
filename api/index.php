@@ -34,8 +34,7 @@ require_once dirname(__FILE__) . '/routes/posts.php';
 require_once dirname(__FILE__) . '/routes/comments.php';
 
 Flight::route('GET /', function(){
-    // Flight::redirect('../index.html');
-    echo dirname(__FILE__) . '/routes/comments.php';
+    Flight::redirect('../index.html');
 });
 
 Flight::start();

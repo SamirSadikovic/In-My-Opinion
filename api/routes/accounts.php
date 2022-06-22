@@ -35,3 +35,23 @@ Flight::route('GET /accounts/points/@id', function($id){
     $points = Flight::accountService()->getPoints($id);
     Flight::json($points);
 });
+
+Flight::route('GET /accounts/topics/number/@id', function($id){
+    $points = Flight::accountService()->getTopicCount($id);
+    Flight::json($points);
+});
+
+Flight::route('GET /accounts/posts/number/@id', function($id){
+    $points = Flight::accountService()->getPostCount($id);
+    Flight::json($points);
+});
+
+Flight::route('GET /accounts/comments/number/@id', function($id){
+    $points = Flight::accountService()->getCommentCount($id);
+    Flight::json($points);
+});
+
+Flight::route('PUT /accounts/deactivate/@id', function($id){
+    $account = Flight::accountService()->update($id, ["status" => "inactive"]);
+    Flight::json($account);
+});

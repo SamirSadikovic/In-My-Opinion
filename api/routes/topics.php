@@ -31,15 +31,9 @@ Flight::route('GET /topics/posts/@id', function($id){
     Flight::json($posts);
 });
 
-Flight::route('GET /topics/admins/@id', function($id){
-    $admins = Flight::topicService()->getAdministrators($id);
+Flight::route('GET /topics/creator/@id', function($id){
+    $admins = Flight::topicService()->getCreator($id);
     Flight::json($admins);
-});
-
-Flight::route('POST /topics/admins/@id', function($id){
-    $account = Flight::request()->data->getData()['account_id'];
-    $admin = Flight::topicService()->setAdministrator($id, $account);
-    Flight::json($admin);
 });
 
 Flight::route('GET /topics/subscriptions/@id', function($id){
