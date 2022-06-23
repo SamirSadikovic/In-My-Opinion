@@ -1,6 +1,7 @@
 {
     "require": {
         "mikecao/flight": "^2.0",
-        "twbs/bootstrap": "5.2.0-beta1"
+        "twbs/bootstrap": "5.2.0-beta1",
+        "firebase/php-jwt": "^6.2"
     }
 }

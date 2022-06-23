@@ -8,6 +8,10 @@ class AccountDao extends BaseDao{
         parent::__construct("accounts");
     }
 
+    public function getAccountByEmail($email) {
+        return $this->queryUnique("SELECT * FROM accounts WHERE email = :email", ['email' => $email]);
+    }
+
     public function updateAccountByEmail($email, $account) {
         $this->update($email, $account, "email");
     }

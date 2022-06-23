@@ -1,4 +1,29 @@
 <?php
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+Flight::route('POST /register', function(){
+    $data = Flight::request()->data->getData();
+    $result = Flight::accountService()->register($data);
+    Flight::json($result);
+});
+
+Flight::route('POST /login', function(){
+    $data = Flight::request()->data->getData();
+    $user = Flight::accountDao()->getAccountByEmail($data['email']);
+
+    if(isset($user['id'])){
+        if($user['password'] == $data['password']){
+            unset($user['password']);
+            $jwt = JWT::encode($user, Config::JWT_SECRET, 'HS256');
+            Flight::json(["token" => $jwt]);
+        } else {
+            Flight::json(["message" => "Wrong password."], 404);
+        }
+    } else {
+        Flight::json(["message" => "User does not exist."], 404);
+    }
+});
 
 Flight::route('GET /accounts', function(){
     $search = Flight::query('search');
@@ -12,12 +37,6 @@ Flight::route('GET /accounts', function(){
 Flight::route('GET /accounts/@id', function($id){
     $account = Flight::accountService()->getById($id);
     Flight::json($account);
-});
-
-Flight::route('POST /accounts/register', function(){
-    $data = Flight::request()->data->getData();
-    $result = Flight::accountService()->register($data);
-    Flight::json($result);
 });
 
 Flight::route('PUT /accounts/@id', function($id){
