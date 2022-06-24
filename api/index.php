@@ -31,7 +31,7 @@ Flight::register('topicService', 'TopicService');
 Flight::register('postService', 'PostService');
 Flight::register('commentService', 'CommentService');
 
-Flight::route('/*', function(){
+/* Flight::route('/*', function(){
     $path = Flight::request()->url;
 
     if ($path == '/login' || $path == '/'){
@@ -52,10 +52,10 @@ Flight::route('/*', function(){
         return FALSE;
         }
     }
-});
+}); */
 
 Flight::route('GET /', function(){
-    Flight::redirect('../pages/index.html?topic=1');
+    Flight::redirect('../pages/login.html');
 });
 
 require_once dirname(__FILE__) . '/routes/accounts.php';
