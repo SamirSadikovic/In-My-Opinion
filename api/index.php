@@ -35,11 +35,8 @@ Flight::route('/*', function(){
     $path = Flight::request()->url;
 
     if ($path == '/login' || $path == '/'){
-        echo($path);
-        die;
-    }
-        // return TRUE;
-        
+        return TRUE;
+    }   
  
     $headers = getallheaders();
     if (@!$headers['Authorization']){
