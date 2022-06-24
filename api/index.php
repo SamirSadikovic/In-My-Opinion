@@ -33,7 +33,7 @@ Flight::register('commentService', 'CommentService');
 
 Flight::route('/*', function(){
     $path = Flight::request()->url;
-    print_r($path);
+    console.log($path);
     if ($path == '/login' || $path == '/')
         return TRUE;
         
