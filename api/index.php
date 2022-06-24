@@ -33,10 +33,12 @@ Flight::register('commentService', 'CommentService');
 
 Flight::route('/*', function(){
     $path = Flight::request()->url;
-    echo($path);
-    die;
-    if ($path == '/login' || $path == '/')
-        return TRUE;
+
+    if ($path == '/login' || $path == '/'){
+        echo($path);
+        die;
+    }
+        // return TRUE;
         
  
     $headers = getallheaders();
