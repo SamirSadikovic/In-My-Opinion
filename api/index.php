@@ -31,7 +31,7 @@ Flight::register('topicService', 'TopicService');
 Flight::register('postService', 'PostService');
 Flight::register('commentService', 'CommentService');
 
-/* Flight::route('/*', function(){
+Flight::route('/*', function(){
     $path = Flight::request()->url;
     print_r($path);
     if ($path == '/login' || $path == '/')
@@ -52,7 +52,7 @@ Flight::register('commentService', 'CommentService');
         return FALSE;
         }
     }
-}); */
+});
 
 Flight::route('GET /', function(){
     Flight::redirect('../pages/index.html?topic=1');
