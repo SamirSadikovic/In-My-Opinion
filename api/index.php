@@ -54,7 +54,7 @@ Flight::register('commentService', 'CommentService');
     }
 }); */
 
-Flight::route('/', function(){
+Flight::route('GET /', function(){
     Flight::redirect('../pages/index.html?topic=1');
 });
 
