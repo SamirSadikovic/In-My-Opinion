@@ -25,7 +25,7 @@ class AccountService extends BaseService{
             throw new Exception("Password is not set.");
 
         try {
-            parent::add($account);
+            $result = parent::add($account);
         } catch(Exception $e) {
             if(str_contains($e->getMessage(), "accounts.email_UNIQUE"))
                 throw new Exception("Account with the same email already exists: " . $account['email'], 400, $e);
@@ -34,7 +34,7 @@ class AccountService extends BaseService{
             else
                 throw $e;
         }
-        return $account;
+        return $result;
     }
 
     public function getSubscriptions($id) {

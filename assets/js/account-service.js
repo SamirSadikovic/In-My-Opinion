@@ -10,7 +10,31 @@ var AccountService = {
           AccountService.login(entity);
         }
       });
+
+      $('#registerForm').validate({
+        submitHandler: function(form) {
+          var entity = Object.fromEntries((new FormData(form)).entries());
+          AccountService.register(entity);
+        }
+      });
     },
+
+    register: function(entity){
+      $.ajax({
+          url: '../api/register',
+          type: 'POST',
+          data: JSON.stringify(entity),
+          contentType: "application/json",
+          dataType: "json",
+          success: function(result) {
+              localStorage.setItem("token", result.token);
+              window.location.replace("index.html?topic=1");
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+              toastr.error(XMLHttpRequest.responseJSON.message);
+          }
+          });
+      },
 
     login: function(entity){
     $.ajax({

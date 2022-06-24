@@ -31,12 +31,13 @@ Flight::register('topicService', 'TopicService');
 Flight::register('postService', 'PostService');
 Flight::register('commentService', 'CommentService');
 
-/* Flight::route('/*', function(){
+Flight::route('/*', function(){
     $path = Flight::request()->url;
 
-    if ($path == '/login' || $path == '/'){
+    if ($path == '/login' || $path == '/register' || $path == '/'){
         return TRUE;
-    }   
+    }
+        
  
     $headers = getallheaders();
     if (@!$headers['Authorization']){
@@ -52,10 +53,10 @@ Flight::register('commentService', 'CommentService');
         return FALSE;
         }
     }
-}); */
+});
 
 Flight::route('GET /', function(){
-    Flight::redirect('../test.html');
+    Flight::redirect('../pages/index.html?topic=1');
 });
 
 require_once dirname(__FILE__) . '/routes/accounts.php';

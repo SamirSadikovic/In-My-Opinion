@@ -4,8 +4,17 @@ use Firebase\JWT\Key;
 
 Flight::route('POST /register', function(){
     $data = Flight::request()->data->getData();
-    $result = Flight::accountService()->register($data);
-    Flight::json($result);
+    $user = Flight::accountDao()->getAccountByEmail($data['email']);
+
+    if(isset($user['id'])){
+        Flight::json(["message" => "User already exists"], 400);
+    } else {
+        $result = Flight::accountService()->register($data);
+        $returnedUser = Flight::accountService()->getById($result['id']);
+        unset($returnedUser['password']);
+        $jwt = JWT::encode($returnedUser, Config::JWT_SECRET, 'HS256');
+        Flight::json(["token" => $jwt]);
+    }
 });
 
 Flight::route('POST /login', function(){
