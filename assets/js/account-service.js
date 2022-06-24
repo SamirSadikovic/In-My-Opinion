@@ -1,9 +1,9 @@
 var AccountService = {
     init: function(){
       var token = localStorage.getItem("token");
-      if (token){
-        window.location.replace("index.html");
-      }
+      if (token)
+        window.location.replace("index.html?topic=1");
+
       $('#loginForm').validate({
         submitHandler: function(form) {
           var entity = Object.fromEntries((new FormData(form)).entries());
@@ -21,7 +21,7 @@ var AccountService = {
         dataType: "json",
         success: function(result) {
             localStorage.setItem("token", result.token);
-            window.location.replace("index.html");
+            window.location.replace("index.html?topic=1");
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             toastr.error(XMLHttpRequest.responseJSON.message);

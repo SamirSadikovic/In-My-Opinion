@@ -81,6 +81,14 @@ a:hover {
 	color: #ff8a65 !important;
 }
 
+.upvoted {
+	color: #6677cc !important;
+}
+
+.downvoted {
+	color: #ff8a65 !important;
+}
+
 .upvote:hover {
 	color: #6677cc !important;
 	cursor: pointer !important;

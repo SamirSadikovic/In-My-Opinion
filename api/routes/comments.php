@@ -15,8 +15,11 @@ Flight::route('GET /comments/@id', function($id){
 });
 
 Flight::route('POST /comments/create', function(){
+    $account_id = Flight::get('user')['id'];
     $data = Flight::request()->data->getData();
+    $data['account_id'] = $account_id;
     $comment = Flight::commentService()->create($data);
+    $comment['username'] = Flight::get('user')['username'];
     Flight::json($comment);
 });
 
@@ -38,7 +41,8 @@ Flight::route('GET /comments/voters/@id', function($id){
 });
 
 Flight::route('POST /comments/vote/@id', function($id){
-    $account = Flight::request()->data->getData()['account_id'];
+    $account_id = Flight::get('user')['id'];
     $type = Flight::request()->data->getData()['type'];
-    Flight::commentService()->vote($id, $account, $type);
+    $results = Flight::commentService()->vote($id, $account_id, $type);
+    Flight::json($results);
 });

@@ -7,9 +7,13 @@
         <link rel="icon" type="image/x-icon" href="../assets/images/imo_logo.png">
         <link href="../assets/css/base.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-	</head>
-	<body onload="profileLoad()">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../assets/js/functions.js"></script>
+    </head>
+	<body>
         <header class="p-3 mb-3 border-bottom">
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -29,7 +33,7 @@
                         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                             <li><a class="dropdown-item" href="../api/">Home</a></li>
                             <li><a class="dropdown-item" href="topics.html">Topics</a></li>
-                            <li><a class="dropdown-item nav-active" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="ProfileService.view('user')" id="profileNavLink">Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#" onclick="AccountService.logout()">Sign out</a></li>
                         </ul>
@@ -41,7 +45,7 @@
 			<div class="d-flex align-items-center justify-content-center">
 				<div class="table-responsive col-8">
 					<table class="table">
-						<thead class="d-none">
+						<thead id="yourProfileHead"  class="d-none">
 							<tr>
 								<th scope="col">
 									<h4 class="text-center" style="margin: 0 !important;"><strong>Your profile</strong></h4>
@@ -51,11 +55,7 @@
 						<tbody>
 							<tr>
 								<td class="d-flex align-items-center justify-content-center border-bottom-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle rounded-circle m-3" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                                    </svg>
-                                    <h1 style="margin: 0 !important; display: inline;" id="usernameDisplay">username1</h1>
+                                    <h1 style="margin: 0 !important; display: inline;" id="usernameDisplay"></h1>
 								</td>
 							</tr>
                             <tr>
@@ -63,34 +63,34 @@
                                     <table class="col-8 table-responsive mb-0">
                                         <tr class="border-bottom">
                                             <td class="p-3 border-end text-end col-6">
-                                                <h2 style="margin:0 !important; display: inline;">total points</h2>
+                                                <h2 style="margin:0 !important; display: inline;">points</h2>
                                             </td>
                                             <td class="p-3 col-6 text-center">
-                                                <h2 style="margin:0 !important; display: inline;" id="pointsDisplay">1265</h2>
+                                                <h2 style="margin:0 !important; display: inline;" id="pointsDisplay"></h2>
                                             </td>
                                         </tr>
                                         <tr class="border-bottom">
                                             <td class="p-3 border-end text-end col-6">
-                                                <h2 style="margin:0 !important; display: inline;">total posts</h2>
+                                                <h2 style="margin:0 !important; display: inline;">topics</h2>
                                             </td>
                                             <td class="p-3 col-6 text-center">
-                                                <h2 style="margin:0 !important; display: inline;" id="postCountDisplay">75</h2>
+                                                <h2 style="margin:0 !important; display: inline;" id="topicCountDisplay"></h2>
                                             </td>
                                         </tr>
                                         <tr class="border-bottom">
                                             <td class="p-3 border-end text-end col-6">
-                                                <h2 style="margin:0 !important; display: inline;">total comments</h2>
+                                                <h2 style="margin:0 !important; display: inline;">posts</h2>
                                             </td>
                                             <td class="p-3 col-6 text-center">
-                                                <h2 style="margin:0 !important; display: inline;" id="commentCountDisplay">7</h2>
+                                                <h2 style="margin:0 !important; display: inline;" id="postCountDisplay"></h2>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="p-3 border-end text-end col-6">
-                                                <h2 style="margin:0 !important; display: inline;">total topics</h2>
+                                                <h2 style="margin:0 !important; display: inline;">comments</h2>
                                             </td>
                                             <td class="p-3 col-6 text-center">
-                                                <h2 style="margin:0 !important; display: inline;" id="topicCountDisplay">12</h2>
+                                                <h2 style="margin:0 !important; display: inline;" id="commentCountDisplay"></h2>
                                             </td>
                                         </tr>
                                     </table>
@@ -103,5 +103,9 @@
 		</div>
     </body>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="../assets/js/base.js"></script>
+    <script src="../assets/js/account-service.js"></script>
+    <script src="../assets/js/profile-service.js"></script>
+    <script src="../assets/js/post-service.js"></script>
+    <script src="../assets/js/topic-service.js"></script>
+    <script>ProfileService.init();</script>
 </html>

@@ -28,12 +28,19 @@ Flight::route('PUT /topics/@id', function($id){
 
 Flight::route('GET /topics/posts/@id', function($id){
     $posts = Flight::topicService()->getPosts($id);
-    Flight::json($posts);
+    $account_id = Flight::get('user')['id'];
+    $feedPosts = [];
+    foreach ($posts as $post) {
+        $post['voteByUser'] = Flight::accountDao()->voteTypePost($post['id'], $account_id);
+        array_push($feedPosts, $post);
+    }
+    //return posts with like/dislike from current user
+    Flight::json($feedPosts);
 });
 
 Flight::route('GET /topics/creator/@id', function($id){
-    $admins = Flight::topicService()->getCreator($id);
-    Flight::json($admins);
+    $creator = Flight::topicService()->getCreator($id);
+    Flight::json($creator);
 });
 
 Flight::route('GET /topics/subscriptions/@id', function($id){
@@ -41,10 +48,16 @@ Flight::route('GET /topics/subscriptions/@id', function($id){
     Flight::json($subscribers);
 });
 
-Flight::route('POST /topics/subscriptions/@id', function($id){
-    $account = Flight::request()->data->getData()['account_id'];
-    Flight::topicService()->subscribeAccount($id, $account);
+Flight::route('POST /topics/subscribe/@id', function($id){
+    $account_id = Flight::get('user')['id'];
+    Flight::topicService()->subscribeAccount($id, $account_id);
     Flight::json(['message' => "You have been subscribed."]);
+});
+
+Flight::route('DELETE /topics/unsubscribe/@id', function($id){
+    $account_id = Flight::get('user')['id'];
+    Flight::topicService()->unsubscribeAccount($id, $account_id);
+    Flight::json(['message' => "You have been unsubscribed."]);
 });
 
 Flight::route('GET /topics/subscriptions/number/@id', function($id){

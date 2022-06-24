@@ -32,7 +32,7 @@ class CommentService extends BaseService{
     }
 
     public function vote($id, $account_id, $type) {
-        $this->dao->vote($id, $account_id, $type);
+        return $this->dao->vote($id, $account_id, $type);
     }
 
 }

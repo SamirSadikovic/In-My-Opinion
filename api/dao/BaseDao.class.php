@@ -104,6 +104,8 @@ class BaseDao {
         foreach($primary_key as $name => $value)
             $entity[$name] = $value;
         $stmt->execute($entity);
+
+        return $entity;
     }
 
     protected function query($query, $params) {
@@ -129,6 +131,22 @@ class BaseDao {
 
     public function getById($id) {
         return $this->queryUnique("SELECT * FROM $this->table WHERE id = :id", ['id' => $id]);
+    }
+
+    public function delete($id){
+        $stmt = $this->connection->prepare("DELETE FROM " . $this->table_name . " WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+      }
+
+    public function deleteComposite($keyOneName, $keyOne, $keyTwoName, $keyTwo, $table){
+        if(!isset($table))
+            $table = $this->table;
+        
+        $stmt = $this->connection->prepare("DELETE FROM ${table} WHERE ${keyOneName} = :keyOne AND ${keyTwoName} = :keyTwo");
+        $stmt->bindParam(':keyOne', $keyOne);
+        $stmt->bindParam(':keyTwo', $keyTwo);
+        $stmt->execute();
     }
 
     public function getAll($offset = 0, $limit = 25, $order = "-id") {

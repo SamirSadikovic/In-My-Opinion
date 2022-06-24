@@ -33,7 +33,7 @@ Flight::register('commentService', 'CommentService');
 
 Flight::route('/*', function(){
     $path = Flight::request()->url;
-    if ($path == '/login')
+    if ($path == '/login' || $path == '/')
         return TRUE;
  
     $headers = getallheaders();
@@ -53,7 +53,7 @@ Flight::route('/*', function(){
 });
 
 Flight::route('GET /', function(){
-    Flight::redirect('../pages/index.html');
+    Flight::redirect('../pages/index.html?topic=1');
 });
 
 require_once dirname(__FILE__) . '/routes/accounts.php';

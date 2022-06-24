@@ -20,9 +20,9 @@ class PostDao extends BaseDao{
 
     public function vote($id, $account_id, $type) {
         try{
-            $this->insert('post_votes', ['account_id' => $account_id, 'post_id' => $id, 'type' => $type]);
+            return $this->insert('post_votes', ['account_id' => $account_id, 'post_id' => $id, 'type' => $type]);
         } catch(PDOException $e){
-            $this->updateComposite('post_votes', ['account_id' => $account_id, 'post_id' => $id], ['type' => $type]);
+            return $this->updateComposite('post_votes', ['account_id' => $account_id, 'post_id' => $id], ['type' => $type]);
         }
     }
 
@@ -38,12 +38,13 @@ class PostDao extends BaseDao{
                             LIMIT ${limit} OFFSET ${offset}", ['title' => strtolower($search)]);
     }
 
-    public function getVoters($id) {
+    public function getVoters($id, $type) {
         return $this->query("SELECT accounts.*
                             FROM post_votes
                             JOIN accounts ON accounts.id = post_votes.account_id
                             JOIN posts ON posts.id = post_votes.post_id
-                            WHERE post_id = :id", ['id' => $id]);
+                            WHERE post_id = :id
+                            AND type = :type", ['id' => $id, 'type' => $type]);
     }
 
     //Override

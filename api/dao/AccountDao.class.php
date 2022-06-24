@@ -12,6 +12,10 @@ class AccountDao extends BaseDao{
         return $this->queryUnique("SELECT * FROM accounts WHERE email = :email", ['email' => $email]);
     }
 
+    public function getByUsername($username) {
+        return $this->queryUnique("SELECT * FROM accounts WHERE username = :username", ['username' => $username]);
+    }
+
     public function updateAccountByEmail($email, $account) {
         $this->update($email, $account, "email");
     }
@@ -29,9 +33,7 @@ class AccountDao extends BaseDao{
     }
 
     public function getTopicCount($id) {
-        return count($this->query("SELECT *
-                            FROM subscriptions
-                            WHERE account_id = :id", ['id' => $id]));
+        return count($this->getSubscriptions($id));
     }
 
     public function getPostCount($id) {
@@ -55,5 +57,27 @@ class AccountDao extends BaseDao{
                             LIKE '%' || :username || '%'
                             ORDER BY ${orderColumn} ${orderDirection}
                             LIMIT ${limit} OFFSET ${offset}", ["username" => strtolower($search)]);
+    }
+
+    public function voteTypePost($post_id, $account_id) {
+        $result = $this->queryUnique("SELECT type
+                                FROM post_votes
+                                WHERE account_id = :account_id
+                                AND post_id = :post_id", ["account_id" => $account_id, "post_id" => $post_id]);
+        if($result == null)
+            return 0;
+        else
+            return $result['type'];
+    }
+
+    public function voteTypeComment($comment_id, $account_id) {
+        $result = $this->queryUnique("SELECT type
+                                FROM comment_votes
+                                WHERE account_id = :account_id
+                                AND comment_id = :comment_id", ["account_id" => $account_id, "comment_id" => $comment_id]);
+        if($result == null)
+            return 0;
+        else
+            return $result['type'];
     }
 }

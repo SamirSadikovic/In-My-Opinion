@@ -39,6 +39,10 @@ class TopicService extends BaseService{
         $this->dao->subscribeAccount($id, $account_id);
     }
 
+    public function unsubscribeAccount($id, $account_id) {
+        $this->dao->unsubscribeAccount($id, $account_id);
+    }
+
     public function getNumberOfSubscribers($id) {
         return $this->dao->getNumberOfSubscribers($id);
     }

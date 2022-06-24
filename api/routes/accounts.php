@@ -39,13 +39,19 @@ Flight::route('GET /accounts/@id', function($id){
     Flight::json($account);
 });
 
+Flight::route('GET /accounts/@username', function($username){
+    $account = Flight::accountService()->getByUsername($username);
+    Flight::json($account);
+});
+
 Flight::route('PUT /accounts/@id', function($id){
     $data = Flight::request()->data->getData();
     $account = Flight::accountService()->update($id, $data);
     Flight::json($account);
 });
 
-Flight::route('GET /accounts/subscriptions/@id', function($id){
+Flight::route('GET /accounts/subscriptions/list', function(){
+    $id = Flight::get('user')['id'];
     $subscriptions = Flight::accountService()->getSubscriptions($id);
     Flight::json($subscriptions);
 });
@@ -55,19 +61,20 @@ Flight::route('GET /accounts/points/@id', function($id){
     Flight::json($points);
 });
 
-Flight::route('GET /accounts/topics/number/@id', function($id){
-    $points = Flight::accountService()->getTopicCount($id);
-    Flight::json($points);
-});
+Flight::route('GET /profile/@id', function($id){
+    if($id == 'user')
+        $id = FLight::get('user')['id'];
 
-Flight::route('GET /accounts/posts/number/@id', function($id){
-    $points = Flight::accountService()->getPostCount($id);
-    Flight::json($points);
-});
-
-Flight::route('GET /accounts/comments/number/@id', function($id){
-    $points = Flight::accountService()->getCommentCount($id);
-    Flight::json($points);
+    $account = Flight::accountService()->getById($id);
+    $topics = Flight::accountService()->getTopicCount($id);
+    $posts = Flight::accountService()->getPostCount($id);
+    $comments = Flight::accountService()->getCommentCount($id);
+    $profile = ['username' => $account['username'],
+                'points' => $account['points'],
+                'topics' => $topics,
+                'posts' => $posts,
+                'comments' => $comments];
+    Flight::json($profile);
 });
 
 Flight::route('PUT /accounts/deactivate/@id', function($id){

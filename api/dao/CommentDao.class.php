@@ -23,9 +23,9 @@ class CommentDao extends BaseDao{
 
     public function vote($id, $account_id, $type) {
         try{
-            $this->insert("comment_votes", ['account_id' => $account_id, 'comment_id' => $id, 'type' => $type]);
+            return $this->insert("comment_votes", ['account_id' => $account_id, 'comment_id' => $id, 'type' => $type]);
         } catch(PDOException $e){
-            $this->updateComposite("comment_votes", ['account_id' => $account_id, 'comment_id' => $id], ['type' => $type]);
+            return $this->updateComposite("comment_votes", ['account_id' => $account_id, 'comment_id' => $id], ['type' => $type]);
         }
     }
 

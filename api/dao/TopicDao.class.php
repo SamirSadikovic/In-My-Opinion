@@ -37,6 +37,10 @@ class TopicDao extends BaseDao{
         $this->insert("subscriptions", ['topic_id' => $id, 'account_id' => $account_id]);
     }
 
+    public function unsubscribeAccount($id, $account_id) {
+        $this->deleteComposite("account_id", $account_id, "topic_id", $id, "subscriptions");
+    }
+
     public function getSubscribers($id) {
         return $this->query("SELECT *
                             FROM subscriptions
