@@ -55,7 +55,7 @@ Flight::register('commentService', 'CommentService');
 }); */
 
 Flight::route('GET /', function(){
-    Flight::redirect('../pages/login.html');
+    Flight::redirect('../test.html');
 });
 
 require_once dirname(__FILE__) . '/routes/accounts.php';
