@@ -33,8 +33,10 @@ Flight::register('commentService', 'CommentService');
 
 Flight::route('/*', function(){
     $path = Flight::request()->url;
+    print_r($path);
     if ($path == '/login' || $path == '/')
         return TRUE;
+        
  
     $headers = getallheaders();
     if (@!$headers['Authorization']){
@@ -52,7 +54,7 @@ Flight::route('/*', function(){
     }
 });
 
-Flight::route('GET /', function(){
+Flight::route('/', function(){
     Flight::redirect('../pages/login.html');
 });
 
