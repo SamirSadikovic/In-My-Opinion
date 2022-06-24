@@ -53,7 +53,7 @@ Flight::route('/*', function(){
 });
 
 Flight::route('GET /', function(){
-    Flight::redirect('../pages/index.html?topic=1');
+    Flight::redirect('../pages/login.html');
 });
 
 require_once dirname(__FILE__) . '/routes/accounts.php';
